@@ -17,3 +17,7 @@ Route::get('/', function () { return view('welcome');});
 //Route::get('/empleados/edit', function () {return view('empleados.edit');});
 Route::resource('empleados','EmpleadosController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
