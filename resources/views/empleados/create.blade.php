@@ -9,6 +9,10 @@
 
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <form action="{{ url('/empleados')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field()}}
@@ -16,7 +20,8 @@
     @include('empleados.form',['Modo'=>'Crear'])
     
 </form>
-
+</div>
+@endsection
 
 <script>
 function readURL(input) {

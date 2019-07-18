@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () { return view('welcome');});
+Route::get('/', function () { return view('auth.Login');});
 //Route::get('/empleados', function () {return view('empleados.index');});
 //Route::get('/empleados/form', function () {    return view('empleados.form');});
 //Route::get('/empleados/edit', function () {return view('empleados.edit');});
 Route::resource('empleados','EmpleadosController');
 
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

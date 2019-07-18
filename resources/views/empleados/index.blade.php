@@ -1,37 +1,45 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
 @if(Session::has('Mensaje')){{
                 Session::get('Mensaje')
             }}
         @endif
-<table border="1">
-    <thead>
+<table class="table table-light table-hover">
+    <thead text-align="center">
         <tr>
         <th>ID</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>Nombre</th>
+        
+        <th>Nombre Completo</th>
         <th>Correo</th>
         <th>Foto</th>
+        <th>Acciones</th>
         </tr>
     </thead>
     <body>
         
 
-        <a href="{{url('empleados/create')}}">Agregar empleado</a>
+        <a href="{{url('empleados/create')}}" class="btn btn-success">Agregar empleado</a>
+        <br>
+        <br>
+
         @foreach($empleados as $empleado)
             <tr>
              <td>{{$loop->iteration}}</td>
-             <td>{{$empleado->ApellidoPaterno}}</td>
-             <td>{{$empleado->ApellidoMaterno}}</td>
-             <td>{{$empleado->Nombre}}</td>
+             
+             <td>{{$empleado->Nombre}} {{$empleado->ApellidoPaterno}} {{$empleado->ApellidoMaterno}}</td>
              <td>{{$empleado->Correo}}</td>
-             <td> <img src="{{asset('storage').'/'.$empleado->Foto}}" alt="" width="120"></td>
-             <td><a href="{{url('/empleados/'.$empleado->id.'/edit')}}">Editar</a> | <form action="{{url('/empleados/'.$empleado->id)}}" method="post">
+             <td> <img src="{{asset('storage').'/'.$empleado->Foto}}" class="img thumbnail img img-fluid" alt="" width="100"></td>
+             <td><a href="{{url('/empleados/'.$empleado->id.'/edit')}}" class="btn btn-warning">Editar</a> | <form action="{{url('/empleados/'.$empleado->id)}}" method="post" style="display:inline">
              {{csrf_field()}}
              {{method_field('DELETE')}}
-            <button type="submit" onclick="return confirm('¿Borrar?');">Borrar</button>
+            <button type="submit" onclick="return confirm('¿Borrar?');" class="btn btn-danger">Borrar</button>
 
              </form></td>
             </tr>
         @endforeach
     </body>
 </table>
+        </div>
+@endsection
