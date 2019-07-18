@@ -6,27 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Creación</title>
+
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <form action="{{ url('/empleados')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field()}}
    
-    <label for="ApellidoPaterno">{{'ApellidoPaterno'}}</label>
-    <input type="text" name="ApellidoPaterno"  value=""><br>
-    <label for="ApellidoMaterno">{{'ApellidoMaterno'}}</label>
-    <input type="text" name="ApellidoMaterno"  value=""><br>
-    <label for="Nombre">{{'Nombre'}}</label>
-    <input type="text" name="Nombre"  value=""><br>
-    <label for="Correo">{{'Correo'}}</label>
-    <input type="email" name="Correo"  value=""><br>
-    <label for="foto">{{'Foto'}}</label>
-    <img src="#" id="blah" alt="">
-    <input type="file" id="imgInp" name="Foto"  value=""><br>
-    <input type="submit" value="Agregar">
-
-
-
+    @include('empleados.form',['Modo'=>'Crear'])
+    
 </form>
 
 

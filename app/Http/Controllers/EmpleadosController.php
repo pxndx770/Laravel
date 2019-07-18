@@ -47,7 +47,8 @@ class EmpleadosController extends Controller
         }
         Empleados::insert($datosEmpleados);
 
-        return response()->json($datosEmpleados);
+        //return response()->json($datosEmpleados);
+        return redirect('empleados')->with('Mensaje','Empleado Agregado con exito');
     }
 
     /**
@@ -95,7 +96,8 @@ class EmpleadosController extends Controller
         Empleados::where('id','=',$id)->update($datosEmpleados);
         $empleado=Empleados::findOrFail($id);
         
-        return view('empleados.edit',compact('empleado'));
+        //return view('empleados.edit',compact('empleado'));
+        return redirect('empleados')->with('Mensaje','Empleado modificado con exito');
 
     }
 
@@ -115,7 +117,7 @@ class EmpleadosController extends Controller
         }
 
 
-        return redirect('empleados');
+        return redirect('empleados')->with('Mensaje','Usuario Eliminado');
 
     }
 }

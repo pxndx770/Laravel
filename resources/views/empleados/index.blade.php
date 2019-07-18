@@ -1,4 +1,7 @@
-Inicio
+@if(Session::has('Mensaje')){{
+                Session::get('Mensaje')
+            }}
+        @endif
 <table border="1">
     <thead>
         <tr>
@@ -11,6 +14,9 @@ Inicio
         </tr>
     </thead>
     <body>
+        
+
+        <a href="{{url('empleados/create')}}">Agregar empleado</a>
         @foreach($empleados as $empleado)
             <tr>
              <td>{{$loop->iteration}}</td>
